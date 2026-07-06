@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About &amp; Contact | HAVON Realty Limited</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#454748",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "primary": "#000000",
+                        "surface-dim": "#ccdbf4",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-container": "#785a1a",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-container": "#fed488",
+                        "outline-variant": "#c5c6cd",
+                        "surface-tint": "#515f78",
+                        "on-tertiary-fixed": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#39475f",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-primary-fixed": "#0d1c32",
+                        "on-surface": "#0d1c2f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dde9ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container": "#e6eeff",
+                        "on-surface-variant": "#44474d",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "on-primary-container": "#76849f",
+                        "tertiary-fixed-dim": "#c5c7c8",
+                        "primary-container": "#0d1c32",
+                        "tertiary-container": "#191c1d",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b9c7e4",
+                        "tertiary-fixed": "#e1e3e4",
+                        "on-background": "#0d1c2f",
+                        "secondary": "#775a19",
+                        "surface-container-highest": "#d5e3fd",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-variant": "#d5e3fd",
+                        "outline": "#75777e",
+                        "on-tertiary-container": "#828485"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "32px",
+                        "stack-xl": "64px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-border {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+        .gold-border-focus:focus-within {
+            border-color: #C5A059;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md dark:bg-surface-container/70 shadow-[0_30px_60px_-15px_rgba(10,25,47,0.08)] border-b border-secondary/20 transition-all duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-bold tracking-tighter text-primary" href="#">HAVON</a><button class="md:hidden text-primary p-2" id="mobile-menu-toggle"><span class="material-symbols-outlined">menu</span></button>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-all duration-300" href="#">Home</a>
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-all duration-300" href="#">Properties</a>
+<a class="font-body-lg text-body-lg text-secondary font-semibold border-b-2 border-secondary pb-1" href="#">About</a>
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-all duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps uppercase tracking-wider scale-95 active:scale-90 transition-transform">
+                Inquire Now
+            </button>
+</div>
+<div class="hidden fixed inset-0 bg-surface z-50 flex flex-col p-margin-mobile" id="mobile-menu"><div class="flex justify-between items-center mb-8"><span class="font-headline-md text-primary">HAVON</span><button class="text-primary" id="mobile-menu-close"><span class="material-symbols-outlined">close</span></button></div><div class="flex flex-col space-y-6"><a class="text-body-lg" href="#">Home</a><a class="text-body-lg" href="#">Properties</a><a class="text-body-lg text-secondary font-semibold" href="#">About</a><a class="text-body-lg" href="#">Contact</a><button class="bg-primary text-on-primary py-4 rounded-full font-label-caps uppercase mt-4">Inquire Now</button></div></div></nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[614px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="A cinematic, low-angle shot of a minimalist, luxury architectural masterpiece made of glass and smooth concrete. The building reflects a golden hour sunset, with warm, soft light glowing through the floor-to-ceiling windows. The environment is serene and expansive, featuring a perfectly manicured lawn and a reflecting pool. The style is ultra-high-end real estate photography, emphasizing permanence, craftsmanship, and exclusive modern living." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBB3xJDRa-hhE_So2pb-WnbAmkV9vxXIFQSimo7x9hTiLIISbHuhaQiEeVakIVIH3UG3H49KvQGJ5VqT1B17bDK024CFPY_005n6mMHIST9wlJJBppPDMWLLW19zoAF50ioCnLbMDktproejzANWh0zQCHaZHAVEBV3H-iHckPn3b6e43aFOMoqjJN8pRk1jtIZ88JWOG8cJSnCx__OxWfLmecJi9LIxqD4ynsVoLFhIo330P7gSCcF')"></div>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px]"></div>
+</div>
+<div class="relative z-10 text-center px-4">
+<h1 class="font-display-lg text-display-lg text-on-primary mb-4 drop-shadow-lg text-5xl">Defining Permanence</h1>
+<p class="font-body-lg text-body-lg text-on-primary/90 max-w-2xl mx-auto">Luxury is not a price point, it is an experience meticulously crafted for those who appreciate the finer details of life.</p>
+</div>
+</section>
+<!-- Mission & Vision Bento -->
+<section class="py-stack-xl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Profile Text -->
+<div class="md:col-span-7 flex flex-col justify-center space-y-stack-lg">
+<span class="font-label-caps text-secondary uppercase tracking-[0.2em]">Our Heritage</span>
+<h2 class="font-headline-lg text-headline-lg text-primary text-headline-md">Crafting Legacies in Real Estate</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Founded on the principles of exclusivity and architectural integrity, Havon Realty Limited has become the premier authority for luxury residential and commercial investments. We don't just list properties; we curate portfolios of timeless significance.
+                    </p>
+<div class="grid grid-cols-2 gap-stack-lg border-t border-outline-variant pt-stack-lg">
+<div>
+<h4 class="font-headline-md text-headline-md text-secondary mb-2">$4.2B+</h4>
+<p class="font-label-caps text-on-surface-variant">Assets Managed</p>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-secondary mb-2">15+</h4>
+<p class="font-label-caps text-on-surface-variant">Global Markets</p>
+</div>
+</div>
+</div>
+<!-- Bento Visuals -->
+<div class="md:col-span-5 grid grid-cols-2 gap-4 h-[500px]">
+<div class="col-span-2 rounded-2xl overflow-hidden shadow-xl gold-border relative group">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A close-up shot of architectural details featuring gold-leaf accents on dark navy textured marble. The lighting is focused and dramatic, highlighting the intricate craftsmanship and luxury materials. This visual represents meticulous attention to detail and high-end property finishes. The mood is sophisticated, permanent, and expensive, fitting for a luxury real estate brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkNt1oWktHQg-5ToL6OesuEzAnqD-BTwsSvtGlJzscRPgXS7DRFSmwF9vP6xokmdOeOa0eXWYvyTMOsBwE7fUTHldosVtwqQweEt2wBfqP0c0DdIq5rdn0cqKYiKx5f2vczte8ga4014uainfijzYpb9kHylHW450bvAzMk80O_WKemq-VGIrPBYq0BLWlOu3-kx-wdAuKG_gLr-zKDcCeRfVrPzYIieg4pKyrGF_UMN1H9xAQKW1k')"></div>
+<div class="absolute bottom-4 left-4 glass-panel px-4 py-2 rounded-lg">
+<p class="font-label-caps text-primary">Excellence</p>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden shadow-lg gold-border relative group">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="An overhead minimalist shot of an architect's desk featuring sleek blueprints, a high-end fountain pen, and a swatch of deep navy fabric. The workspace is bright, clean, and modern, illuminated by natural morning light. This conveys professional planning and the meticulous vision behind luxury development. The color palette is white, navy, and subtle gold accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZCe7-JMTQHVKnhjFYmrt_YPf_FeU-ojt7_xjky_vBW8EqvW-CBRLajUvKTG8C0vKXR8y6TbR9NHI1Rhf2iWBxEnuLQerHO3cUJOGXUFOT1CR9rFpsI3khg900kyFcr0nlTpBa1aRXlli9sbrI3tnoyNhLNkkjil2J8uXnaQoaMwVwj4LL4Zak_bHq7b8bpztKiGlzubXjcj9rSrJeocJA-Fr3gB4Vm_KOiRCH9dmVfdPn0Kb1aE-5')"></div>
+</div>
+<div class="rounded-2xl overflow-hidden shadow-lg gold-border relative group">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A high-end interior view of a minimalist living room with a massive window overlooking a modern city skyline at dusk. The room is styled with expensive contemporary furniture in muted tones of cream and deep blue. The atmosphere is quiet and successful, emphasizing the exclusivity and peace of a luxury penthouse home." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJdB9EPeYxU4AGsrEQeIfgShoKb1pXTusagupTy3UBxpfjRgoirH485W0FKkxdLVZYipDPFTBz7w_jDr8urxhz9OPunz-pTvMrrxhU6BRfCZ6O5zCb8hprFt69B1h7ujum6_rr1UQ363IWzR2dFK5rPhp7UEdBpE0psK-cPGGC_l1g08eL9-s3RucDq4pU6VVSsfd2L8CcPkHTFJCFbVG_tBOLR63sgBWMyJdg4odID_6Df_ys_EgA')"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Values Section -->
+<section class="bg-primary py-stack-xl">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-primary">Our Foundation</h2>
+<div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-10 border border-secondary/30 rounded-2xl hover:bg-secondary/10 transition-colors group">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6 block">verified_user</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mb-4">Integrity</h3>
+<p class="font-body-md text-on-primary/70">Unwavering transparency in every transaction, building trust that spans generations of investors.</p>
+</div>
+<div class="p-10 border border-secondary/30 rounded-2xl hover:bg-secondary/10 transition-colors group">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6 block">diamond</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mb-4">Exclusivity</h3>
+<p class="font-body-md text-on-primary/70">Access to off-market opportunities and bespoke real estate solutions reserved for the discerning few.</p>
+</div>
+<div class="p-10 border border-secondary/30 rounded-2xl hover:bg-secondary/10 transition-colors group">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6 block">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mb-4">Innovation</h3>
+<p class="font-body-md text-on-primary/70">Merging traditional heritage with cutting-edge market analysis and immersive digital property showcases.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-stack-xl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16">
+<span class="font-label-caps text-secondary uppercase tracking-[0.2em]">Leadership</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-2 text-headline-md">Meet the Visionaries</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Team Member 1 -->
+<div class="group">
+<div class="aspect-[4/5] rounded-2xl overflow-hidden mb-6 gold-border relative shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a senior male executive in a bespoke navy suit. He is standing in a brightly lit, modern office with floor-to-ceiling windows. His expression is confident and approachable. The lighting is soft and flattering, emphasizing a successful and trustworthy leadership persona. High-end professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEAyyppiKBg4mHDCtW0VByN2KCG5_wzlo_dOHlDvJ3FzpzQb3ZDYEInOudGeA2S0pR5N97A3bna5Ch4G6kAoRa3ZWxPyJtRaivAof2Jvult3wQaIX60c0iEh6GonJSXCxFiXHGKHJQrkrGZrPAgwxThJ9DAOZVc0OYyhv_-d-85c7xloRkfMMx_DGgMoCDD_mU6M-Qp_YuFsvm6CzMW7trY1DlOMw4xBnK7RnuG_wL8yhvxMT6tCNs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-on-primary text-sm italic font-body-md">"Real estate is the art of placing the right soul in the right space."</p>
+</div>
+</div>
+<h4 class="font-headline-md text-[24px] text-primary">Julian Havon</h4>
+<p class="font-label-caps text-secondary">Chief Executive Officer</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group">
+<div class="aspect-[4/5] rounded-2xl overflow-hidden mb-6 gold-border relative shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a female executive in a sleek, ivory-colored professional outfit. She has a warm smile and is standing against a minimalist background of dark wood and subtle gold accents. The lighting is clean and sophisticated, capturing a sense of high-level expertise and modern professional elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfCx6Q2psk89D9xz_0NUE3JakuJzesbTk-UyXh2GFI7T8Nz3wlT6L83h5BiiB6MCJhaUQYLv6KnmFvfFopOSNlm4DCJDBN5g55WF4gc6sjoKS4Db0__wUD_3Q5RK5mMF3lpvcvmY0ZXW66F_xQue_PXOmrm6QOcO64sm4rPLcI-Zjv2k0lCkYsTCoJFe1oaJQegNmHNLj3ObxLAeQSGuhmgt7mPCOSKt6Lqxf2g4_gxE6Od69SNCfT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-on-primary text-sm italic font-body-md">"Strategy is the bridge between a dream and a deed."</p>
+</div>
+</div>
+<h4 class="font-headline-md text-[24px] text-primary">Elena Sterling</h4>
+<p class="font-label-caps text-secondary">Head of Global Portfolios</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group">
+<div class="aspect-[4/5] rounded-2xl overflow-hidden mb-6 gold-border relative shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a mid-40s male real estate expert in a casual but expensive grey blazer and white shirt. He is outdoors in a high-end residential neighborhood with a blurred luxury villa in the background. The lighting is natural and bright, conveying an active, hands-on professional with deep market knowledge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3_oUrr2xadxyI-UJyQQN4QjSwefoSHv7nnHd1xt2sfHHgFiXtldcYX9splo1UG0BFRNNXCFPv_5D35mVnZ1y5ZmCHXdcAKPNQmIY5Q4ZTHWXJtSEm8nkhjBu9wS5aWAxwr9kOx5yjLKAvwboFeIHLyy36kmQy5xTjbPEdtapLVcgmpbZa5DgDsuEPTvhKrcT0vnMBelEWTdaB9srsiMT-yiCms7BPNAevh7oQezSWolZGXgOlHub7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-on-primary text-sm italic font-body-md">"Every property has a story waiting to be told by its new owner."</p>
+</div>
+</div>
+<h4 class="font-headline-md text-[24px] text-primary">Marcus Vane</h4>
+<p class="font-label-caps text-secondary">Senior Acquisition Director</p>
+</div>
+<!-- Team Member 4 -->
+<div class="group">
+<div class="aspect-[4/5] rounded-2xl overflow-hidden mb-6 gold-border relative shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a younger female architect and advisor with chic, modern eyewear and a dark turtleneck. She is looking at the camera with a sharp, intelligent gaze. The background is a blurred architectural model workshop. The lighting is artistic and dramatic, highlighting a creative and forward-thinking mind." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi96rpmKeIxZrbb6kVj9S57n78Q2lgrqBKCaY6t9N7ykmiJYTvZragu1QXUp7hbdFYdoG9f9QAaDV1VpEchppLNa7-7LpDLMHMLT_2p4GSFEOxg6hDtEgCIZl-VgzA-ZPqv21ynmN2d34f3cBaKpwBe495ylRDe9k3h9_zJ78bFytvbvzu5yLshCGZWHPw5CABdf2ze4wQ1P7B0Me05lJb7HaEYlzlu94sAOykh_YZI9IYePGfqumf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-on-primary text-sm italic font-body-md">"Design is the silent ambassador of luxury."</p>
+</div>
+</div>
+<h4 class="font-headline-md text-[24px] text-primary">Sarah Chen</h4>
+<p class="font-label-caps text-secondary">Chief Design Consultant</p>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-stack-xl bg-surface-container-low" id="contact">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-start">
+<!-- Contact Info & Map -->
+<div class="space-y-stack-xl">
+<div>
+<span class="font-label-caps text-secondary uppercase tracking-[0.2em]">Contact Us</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-2 text-headline-md">Let's Discuss Your Next Investment</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<div>
+<h5 class="font-label-caps text-primary mb-1">Global HQ</h5>
+<p class="font-body-md text-on-surface-variant">12 Mayfair Terrace, London<br/>W1J 5BQ, United Kingdom</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-secondary">call</span>
+<div>
+<h5 class="font-label-caps text-primary mb-1">Inquiries</h5>
+<p class="font-body-md text-on-surface-variant">+44 (0) 20 7946 0123<br/>concierge@havon.com</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<div>
+<h5 class="font-label-caps text-primary mb-1">Hours</h5>
+<p class="font-body-md text-on-surface-variant">Mon - Fri: 9:00 - 18:00<br/>Sat: By Appointment Only</p>
+</div>
+</div>
+</div>
+<!-- Map Placeholder -->
+<div class="rounded-2xl overflow-hidden gold-border h-[300px] shadow-lg relative group">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105" data-alt="A stylized, minimalist map showing the Mayfair area of London. The map uses a high-contrast theme of dark navy for land and light gold lines for streets. A single, elegant gold pin marks the location of Havon Realty Limited. The aesthetic is professional, architectural, and integrates perfectly with the brand's luxury design system." data-location="Mayfair, London" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBosMcJqCKXfhdxrHj1cxUTGtC3j4p8VfPXVLQ2fgR7MyUJtv3T0yPkCUWSbH0jm-3YNCTvzoHzy791wbvhMAOVrKQTqQ3qzm-kDVsewfWMh_m5_ApDY-PYJ_qvTx2Qc7aamVH7gm-JVDImlBve-vSbvl4Gb11tBjaaYQwnU1W9ok6OZhscyBuEbYbIfAhibgvyrLmulI79o7XfoqjHmhSYd54DmxGlrdmxvwQ-uMJeW1hHj4mAK3Mo')"></div>
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="glass-panel p-8 md:p-12 rounded-2xl gold-border shadow-2xl relative">
+<form class="space-y-6" id="contactForm" onsubmit="handleWhatsAppSubmit(event)"><div class="grid grid-cols-1 sm:grid-cols-2 gap-6"><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Full Name</label><input class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md" id="wa_name" placeholder="John Doe" required="" type="text"/></div><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Email Address</label><input class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md" id="wa_email" placeholder="john@example.com" required="" type="email"/></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-6"><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Phone Number</label><input class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md" id="wa_phone" placeholder="+44 000 000 000" type="tel"/></div><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Property Interest</label><select class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md appearance-none" id="wa_interest"><option>Residential Luxury</option><option>Commercial Portfolio</option><option>Estate Management</option><option>Investment Advisory</option></select></div></div><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Subject</label><input class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md" id="wa_subject" placeholder="Inquiry about..." type="text"/></div><div class="space-y-2"><label class="font-label-caps text-primary uppercase text-[10px]">Your Message</label><textarea class="w-full bg-transparent border-b border-outline hover:border-secondary focus:border-secondary focus:ring-0 transition-colors py-3 px-0 font-body-md resize-none" id="wa_message" placeholder="How may we assist you?" required="" rows="4"></textarea></div><button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-caps uppercase tracking-[0.2em] hover:bg-secondary hover:text-primary transition-all duration-300 transform hover:-translate-y-1 shadow-lg" type="submit">Send Inquiry</button></form>
+<!-- Success Message (Hidden) -->
+<div class="hidden absolute inset-0 bg-surface/95 flex flex-col items-center justify-center text-center p-12 rounded-2xl z-20" id="successMessage">
+<span class="material-symbols-outlined text-6xl text-secondary mb-6 animate-bounce" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Inquiry Received</h3>
+<p class="font-body-lg text-on-surface-variant mb-8">A member of our concierge team will reach out to you within 24 hours to discuss your requirements in detail.</p>
+<button class="font-label-caps text-secondary uppercase underline tracking-widest" onclick="resetForm()">Send another message</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="font-headline-md text-headline-md text-on-primary" href="#">HAVON</a>
+<p class="font-body-md text-on-primary/70 max-w-xs">Establishing the new standard for luxury real estate across the world's most coveted destinations.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-caps text-secondary uppercase tracking-widest">Navigation</h5>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Properties</a></li>
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">About Us</a></li>
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Market Insights</a></li>
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-caps text-secondary uppercase tracking-widest">Legal</h5>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h5 class="font-label-caps text-secondary uppercase tracking-widest">Newsletter</h5>
+<p class="font-body-md text-on-primary/70">Subscribe for exclusive off-market opportunities.</p>
+<div class="flex border-b border-on-primary/30 py-2">
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-primary placeholder:text-on-primary/40" placeholder="Your Email" type="email"/>
+<button class="material-symbols-outlined text-secondary">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="border-t border-on-primary/10 py-8 px-margin-desktop text-center">
+<p class="font-body-md text-on-primary/50 text-sm">© 2024 Havon Realty Limited. All rights reserved. Registered in England &amp; Wales.</p>
+</div>
+</footer>
+<script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('successMessage');
+            
+            // Basic animation sequence
+            form.classList.add('opacity-50', 'pointer-events-none');
+            
+            setTimeout(() => {
+                success.classList.remove('hidden');
+                success.classList.add('flex');
+                // Optional: scroll to message
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 800);
+            
+            return false;
+        }
+
+        function resetForm() {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('successMessage');
+            
+            form.reset();
+            form.classList.remove('opacity-50', 'pointer-events-none');
+            success.classList.add('hidden');
+            success.classList.remove('flex');
+        }
+
+        // Simple scroll observer for nav shadow
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'bg-surface/95');
+                nav.classList.remove('py-4', 'bg-surface/70');
+            } else {
+                nav.classList.add('py-4', 'bg-surface/70');
+                nav.classList.remove('py-2', 'bg-surface/95');
+            }
+        });
+    </script>
+</body></html>
