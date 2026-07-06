@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
 <title>Havon Realty Limited | Premium Real Estate</title>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Google Fonts: Playfair Display & Inter -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -110,7 +108,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(197, 160, 89, 0.2);
         }
-        
+
         .hero-gradient {
             background: linear-gradient(to bottom, rgba(13, 28, 47, 0.4), rgba(13, 28, 47, 0.7));
         }
@@ -138,6 +136,141 @@
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
         }
+
+        /* ============ MOBILE FIXES ============ */
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; }
+
+        @media (max-width: 768px) {
+            .px-margin-desktop {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+            .gap-gutter {
+                gap: 20px !important;
+            }
+            .text-display-lg {
+                font-size: 34px !important;
+                line-height: 40px !important;
+                letter-spacing: -0.01em !important;
+            }
+            .text-headline-lg {
+                font-size: 26px !important;
+                line-height: 32px !important;
+            }
+            .text-headline-md {
+                font-size: 22px !important;
+                line-height: 28px !important;
+            }
+            .text-body-lg {
+                font-size: 15px !important;
+                line-height: 22px !important;
+            }
+            header.relative.h-screen {
+                height: 100svh;
+            }
+        }
+
+        /* ============ MOBILE MENU ============ */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 28, 47, 0.55);
+            backdrop-filter: blur(3px);
+            z-index: 60;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: min(82vw, 340px);
+            background: #0d1c2f;
+            z-index: 70;
+            transform: translateX(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 28px 28px 40px;
+            box-shadow: -20px 0 60px rgba(0,0,0,0.35);
+        }
+        .mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-panel a {
+            opacity: 0;
+            transform: translateX(16px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .mobile-menu-panel.open a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .mobile-menu-panel.open a:nth-child(1) { transition-delay: 0.12s; }
+        .mobile-menu-panel.open a:nth-child(2) { transition-delay: 0.18s; }
+        .mobile-menu-panel.open a:nth-child(3) { transition-delay: 0.24s; }
+        .mobile-menu-panel.open a:nth-child(4) { transition-delay: 0.30s; }
+        .mobile-menu-panel.open a:nth-child(5) { transition-delay: 0.36s; }
+
+        .hamburger-line {
+            transition: transform 0.35s ease, opacity 0.25s ease;
+            transform-origin: center;
+        }
+        .hamburger.open .line-1 { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open .line-2 { opacity: 0; }
+        .hamburger.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ============ CONTACT FORM ============ */
+        .wa-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .wa-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.25);
+            transform: scale(0);
+            border-radius: 9999px;
+            transition: transform 0.5s ease;
+        }
+        .wa-btn:active::after {
+            transform: scale(2.5);
+            transition: transform 0s;
+        }
+
+        .form-field {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-field:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -8px rgba(119, 90, 25, 0.4);
+        }
+
+        @keyframes pop-check {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .success-pop {
+            animation: pop-check 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .mobile-menu-panel, .mobile-menu-panel a, .hamburger-line, .wa-btn::after, .form-field {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden">
@@ -145,28 +278,55 @@
 <nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-secondary/20 shadow-[0_30px_60px_-15px_rgba(10,25,47,0.08)]">
 <div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
 <div class="flex items-center gap-4">
-<img alt="Havon Realty Limited" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLsikVcpLp9csk0wCah-i6ohKwKHN9uTBcK4lx_a1sRhisReameOpbRHz1trRE6KvYnxsIAqUoYIc6OEWnfmtTQ4bUr9v4boVvxUyhhNl8OkjgQgI9QTDOx4wv30SMl12bEJy4SWPPm7J6VMbzDKovyKcMm9KlJYsurLAHVg3b6DUIKcUYzC-iM4HFbKA3voOWrDk520YlsWSFjTAcGEqktLivFmCH_ajg6Vp23bysZRQ4-1cDsj9yhXT_M"/>
-<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">HAVON</span>
+<img alt="Havon Realty Limited" class="h-9 md:h-10 w-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLsikVcpLp9csk0wCah-i6ohKwKHN9uTBcK4lx_a1sRhisReameOpbRHz1trRE6KvYnxsIAqUoYIc6OEWnfmtTQ4bUr9v4boVvxUyhhNl8OkjgQgI9QTDOx4wv30SMl12bEJy4SWPPm7J6VMbzDKovyKcMm9KlJYsurLAHVg3b6DUIKcUYzC-iM4HFbKA3voOWrDk520YlsWSFjTAcGEqktLivFmCH_ajg6Vp23bysZRQ4-1cDsj9yhXT_M"/>
+<span class="font-headline-md text-xl md:text-headline-md font-bold tracking-tighter text-primary">HAVON</span>
 </div>
 <div class="hidden md:flex gap-8 items-center">
-<a class="font-body-lg text-body-lg text-secondary font-semibold border-b-2 border-secondary pb-1" href="#">Home</a>
-<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="#">Properties</a>
-<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="#">About</a>
-<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="#">Contact</a>
-<button class="ml-4 bg-primary text-on-primary px-6 py-2 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-secondary transition-all duration-300 scale-95 active:scale-90">
+<a class="font-body-lg text-body-lg text-secondary font-semibold border-b-2 border-secondary pb-1" href="index.html">Home</a>
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="#properties">Properties</a>
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="about.html">About</a>
+<a class="font-body-lg text-body-lg text-primary hover:text-secondary transition-colors" href="#contact">Contact</a>
+<button class="ml-4 bg-primary text-on-primary px-6 py-2 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-secondary transition-all duration-300 scale-95 active:scale-90" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                     Inquire Now
                 </button>
 </div>
-<!-- Mobile Menu Toggle (Simplified) -->
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined">menu</span>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Open menu" class="hamburger md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] text-primary" id="menuToggle">
+<span class="hamburger-line line-1 block w-6 h-[2px] bg-primary rounded-full"></span>
+<span class="hamburger-line line-2 block w-6 h-[2px] bg-primary rounded-full"></span>
+<span class="hamburger-line line-3 block w-6 h-[2px] bg-primary rounded-full"></span>
 </button>
 </div>
 </nav>
+
+<!-- Mobile Menu Overlay + Panel -->
+<div class="mobile-menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu-panel" id="menuPanel">
+<div class="flex justify-between items-center mb-10">
+<span class="font-headline-md text-xl font-bold tracking-tighter text-white">HAVON</span>
+<button aria-label="Close menu" class="text-white/70 hover:text-secondary-fixed transition-colors" id="menuClose">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-white text-2xl font-headline-md py-3 border-b border-white/10 flex items-center justify-between" href="index.html">Home <span class="material-symbols-outlined text-secondary-fixed">arrow_forward</span></a>
+<a class="text-white text-2xl font-headline-md py-3 border-b border-white/10 flex items-center justify-between menu-link" data-target="#properties" href="index.html#properties">Properties <span class="material-symbols-outlined text-secondary-fixed">arrow_forward</span></a>
+<a class="text-white text-2xl font-headline-md py-3 border-b border-white/10 flex items-center justify-between" href="about.html">About Us <span class="material-symbols-outlined text-secondary-fixed">arrow_forward</span></a>
+<a class="text-white text-2xl font-headline-md py-3 border-b border-white/10 flex items-center justify-between menu-link" data-target="#contact" href="index.html#contact">Contact <span class="material-symbols-outlined text-secondary-fixed">arrow_forward</span></a>
+<a class="text-white text-2xl font-headline-md py-3 border-b border-white/10 flex items-center justify-between" href="https://wa.me/2347034900293" target="_blank" rel="noopener">WhatsApp Us <span class="material-symbols-outlined text-secondary-fixed">chat</span></a>
+</div>
+<div class="mt-auto pt-8">
+<p class="text-white/40 text-xs uppercase tracking-widest mb-3">Reach us directly</p>
+<a class="flex items-center gap-3 text-secondary-fixed font-semibold" href="https://wa.me/2347034900293" target="_blank" rel="noopener">
+<span class="material-symbols-outlined">call</span> +234 703 490 0293
+</a>
+</div>
+</div>
+
 <!-- Hero Section -->
 <header class="relative h-screen flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-[10s] scale-110" data-alt="A cinematic wide-angle shot of a sprawling, ultra-modern white architectural villa at sunset. The residence features expansive floor-to-ceiling glass walls that reflect a sky painted in soft oranges and navies. Lush, manicured greenery and a pristine infinity pool framed in gold-toned limestone lead the eye into the composition. The lighting is warm and golden, emphasizing luxury, exclusivity, and a serene high-end lifestyle." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB73pB81WM77Je6AeVZBz7b2RvW3zFAd-XY-G2LBeOvhF8iYEOTxeDn_yODQHjU4TAijIyi3zX1nWVuJiXcyntRn1_u3GzZezDPwVhSpYUJ3hplQfwi6NCNUu1h5A4AktZ-0ospEyGFUBot7vURwLroSM21km0EqkmgWCCgyYu6kJCNKLR1tMmiQ1iLvI85FNx50xcftOFBrk8wqKBBOcgPSmFli9skDVw8Ub_QKkJQ638AXFhQbzWG')"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-[10s] scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB73pB81WM77Je6AeVZBz7b2RvW3zFAd-XY-G2LBeOvhF8iYEOTxeDn_yODQHjU4TAijIyi3zX1nWVuJiXcyntRn1_u3GzZezDPwVhSpYUJ3hplQfwi6NCNUu1h5A4AktZ-0ospEyGFUBot7vURwLroSM21km0EqkmgWCCgyYu6kJCNKLR1tMmiQ1iLvI85FNx50xcftOFBrk8wqKBBOcgPSmFli9skDVw8Ub_QKkJQ638AXFhQbzWG')"></div>
 <div class="absolute inset-0 hero-gradient"></div>
 </div>
 <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto reveal active">
@@ -176,11 +336,11 @@
 <h1 class="font-display-lg text-display-lg text-white mb-8 leading-tight">
                 Find Your Dream Property with <span class="text-secondary-fixed">Havon Realty Limited</span>
 </h1>
-<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-<button class="w-full md:w-auto bg-secondary text-on-secondary px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-500 shadow-xl">
+<div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center">
+<button class="w-full md:w-auto bg-secondary text-on-secondary px-8 md:px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-500 shadow-xl" onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})">
                     View Properties
                 </button>
-<button class="w-full md:w-auto border border-white text-white px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-white/10 backdrop-blur-md transition-all duration-500">
+<button class="w-full md:w-auto border border-white text-white px-8 md:px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:bg-white/10 backdrop-blur-md transition-all duration-500" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                     Contact Us
                 </button>
 </div>
@@ -191,6 +351,7 @@
 <span class="material-symbols-outlined">expand_more</span>
 </div>
 </header>
+
 <!-- Why Choose Us -->
 <section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto bg-surface">
 <div class="text-center mb-stack-xl reveal">
@@ -199,48 +360,42 @@
 <div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Expertise -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">workspace_premium</span>
 </div>
 <h3 class="font-headline-md text-2xl mb-4">Expertise</h3>
 <p class="text-on-surface-variant leading-relaxed">Decades of combined industry knowledge ensuring you receive the most sophisticated real estate advice available.</p>
 </div>
-<!-- Locations -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">location_on</span>
 </div>
 <h3 class="font-headline-md text-2xl mb-4">Prime Locations</h3>
 <p class="text-on-surface-variant leading-relaxed">Exclusive access to the most coveted addresses and high-yield investment districts across the globe.</p>
 </div>
-<!-- Affordable -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">payments</span>
 </div>
 <h3 class="font-headline-md text-2xl mb-4">Value Driven</h3>
 <p class="text-on-surface-variant leading-relaxed">Optimizing value without compromising quality. Premium luxury delivered with fiscal intelligence.</p>
 </div>
-<!-- Secure -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">verified_user</span>
 </div>
 <h3 class="font-headline-md text-2xl mb-4">Secure</h3>
 <p class="text-on-surface-variant leading-relaxed">Robust legal verification and secure transactional processes to protect your legacy and wealth.</p>
 </div>
-<!-- Professional Service -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">handshake</span>
 </div>
 <h3 class="font-headline-md text-2xl mb-4">Professional Service</h3>
 <p class="text-on-surface-variant leading-relaxed">A concierge-level experience where every detail is handled with white-glove precision and discretion.</p>
 </div>
-<!-- Transparent -->
-<div class="glass-card p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
+<div class="glass-card p-6 md:p-8 rounded-xl hover:shadow-2xl transition-all duration-500 reveal">
 <div class="w-14 h-14 bg-primary text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">visibility</span>
 </div>
@@ -249,10 +404,11 @@
 </div>
 </div>
 </section>
+
 <!-- Featured Properties -->
-<section class="py-stack-xl bg-surface-container-low">
+<section class="py-stack-xl bg-surface-container-low" id="properties">
 <div class="max-w-container-max mx-auto px-margin-desktop">
-<div class="flex justify-between items-end mb-stack-xl reveal">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-stack-xl reveal">
 <div>
 <p class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.3em] mb-4">Curated Collection</p>
 <h2 class="font-headline-lg text-headline-lg text-primary">Featured Properties</h2>
@@ -260,10 +416,9 @@
 <a class="hidden md:block font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-all" href="#">View All Listings</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Property Card 1 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="An ultra-luxury coastal estate with a modern minimalist design, featuring large cantilevered roofs and glass walls that open onto a private white-sand beach. The scene is bathed in bright daylight with a clear blue sky. The architecture uses premium natural stone and gold-toned metal accents. The overall aesthetic is clean, high-contrast, and deeply exclusive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfN4UdeGf1-RLqs6_HejM1qbfDX-LT7SGtC7cwRCaJ20bVA8agCsslCCwkHhBxoTG67Vq9a-CFVduw7pihEUAQjas9c6zRDiW1poQ2q0W2T9lyOQtvbXJL-csW8-afjy0FmrPbEo0kezax3AcQghAtDr_dvUR7cjdmBDfykESkHT7MOhNv_XUTY29NmKaDUPZ24CJRF4kcF2AWGnoT2xt3_o9rSaMGRJMvbXH_v-oEuMV0c0IngyaN"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfN4UdeGf1-RLqs6_HejM1qbfDX-LT7SGtC7cwRCaJ20bVA8agCsslCCwkHhBxoTG67Vq9a-CFVduw7pihEUAQjas9c6zRDiW1poQ2q0W2T9lyOQtvbXJL-csW8-afjy0FmrPbEo0kezax3AcQghAtDr_dvUR7cjdmBDfykESkHT7MOhNv_XUTY29NmKaDUPZ24CJRF4kcF2AWGnoT2xt3_o9rSaMGRJMvbXH_v-oEuMV0c0IngyaN"/>
 <div class="absolute top-4 right-4 bg-secondary text-white px-4 py-1 rounded-full text-label-caps font-label-caps">For Sale</div>
 </div>
 <div class="absolute inset-0 gold-border border-2 border-secondary/50 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none"></div>
@@ -279,10 +434,9 @@
 </div>
 </div>
 </div>
-<!-- Property Card 2 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A modern penthouse interior featuring double-height ceilings and a panoramic view of a city skyline at dusk. The interior is styled with bespoke Italian furniture, dark oak flooring, and subtle gold-leaf light fixtures. The mood is sophisticated and moody, with city lights twinkling through massive glass windows. High-end luxury finishings and a quiet, professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9sTfM9LIJRxo_rfY7_sTgkMZvb1zZAs2b4gY1EvlEO00EN8K0EccbfjI_DVkGpy383RPYHFHgZSL2gtxOMnjfAWVl4MM1bfO44WZCzHjJXbIE7Ff4sr_heosYKvbTbTzfMaPB26Li9_LvH-qcSshCfemZFE2fzouQUz7lfVLPYPAyrTD7RGnwx-ZevER-W8VsrAlvDl26MZuja581QKXTLetTM5BxaHgrKxszsFDW9xCI1mJvKlE4"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9sTfM9LIJRxo_rfY7_sTgkMZvb1zZAs2b4gY1EvlEO00EN8K0EccbfjI_DVkGpy383RPYHFHgZSL2gtxOMnjfAWVl4MM1bfO44WZCzHjJXbIE7Ff4sr_heosYKvbTbTzfMaPB26Li9_LvH-qcSshCfemZFE2fzouQUz7lfVLPYPAyrTD7RGnwx-ZevER-W8VsrAlvDl26MZuja581QKXTLetTM5BxaHgrKxszsFDW9xCI1mJvKlE4"/>
 <div class="absolute top-4 right-4 bg-primary text-white px-4 py-1 rounded-full text-label-caps font-label-caps">Sold</div>
 </div>
 <div class="absolute bottom-0 left-0 right-0 p-6 glass-card transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -297,10 +451,9 @@
 </div>
 </div>
 </div>
-<!-- Property Card 3 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A sprawling contemporary mansion in a lush woodland setting. The design features charcoal gray wood siding, large floor-to-ceiling windows, and a warm interior glow. A long private driveway and professional landscaping create a sense of deep privacy and permanence. The lighting is soft morning mist, giving it a peaceful, secluded high-end feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHaJAjJMIPysOFwp-KSFYxWhrOA7oUNCiRSe4mGABumSiGlWQ6M0fvZhCewIayqUvyv2aa5vcXrlnQRYH09aD61n3yOV3yXbnkxrGGhqnZv4v4qItE2wVqtP8YV2vOsUXIrKJQEkNqK39iw3cPaylc93qG4SdGuEwHGlPRAkcnE9q4RoDThfvAe75S1a6FgEDPuwa5VMOpUZy9BAn3lHoOXYN-6tOb3Z-P_Lk3aEdDzoMy1pLtzJ8l"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHaJAjJMIPysOFwp-KSFYxWhrOA7oUNCiRSe4mGABumSiGlWQ6M0fvZhCewIayqUvyv2aa5vcXrlnQRYH09aD61n3yOV3yXbnkxrGGhqnZv4v4qItE2wVqtP8YV2vOsUXIrKJQEkNqK39iw3cPaylc93qG4SdGuEwHGlPRAkcnE9q4RoDThfvAe75S1a6FgEDPuwa5VMOpUZy9BAn3lHoOXYN-6tOb3Z-P_Lk3aEdDzoMy1pLtzJ8l"/>
 <div class="absolute top-4 right-4 bg-secondary text-white px-4 py-1 rounded-full text-label-caps font-label-caps">Exclusive</div>
 </div>
 <div class="absolute bottom-0 left-0 right-0 p-6 glass-card transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -315,10 +468,9 @@
 </div>
 </div>
 </div>
-<!-- Property Card 4 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A futuristic glass and steel villa perched on a cliffside overlooking the Mediterranean. The pool edges blend seamlessly into the horizon. The design is sharp, geometric, and utilizes brushed gold detailing. Evening lighting creates dramatic shadows and highlights the architectural precision. The overall vibe is avant-garde luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALFLk80_8_X_8KjwFQnFjnhhFFYXN07y5U-L6vEZkqr43WLq6__eZtdmb_WdC1NSwgULYW_ihCZAdVIgDUcjomVYho_EwLjtu_1FlY7uuDPNjFuVCbAFzCOdMoqXqWbD0j0SZHq9nNtqW1Z6KjjKWBau5Osukdqnc2X1_AlMpoYXy_z0FJyA68xUPzNd2HPTARBtzBtpFibGjynBywsaeidu32cRGkLUMnDSGpaKjK7vLqrDjPxRSL"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALFLk80_8_X_8KjwFQnFjnhhFFYXN07y5U-L6vEZkqr43WLq6__eZtdmb_WdC1NSwgULYW_ihCZAdVIgDUcjomVYho_EwLjtu_1FlY7uuDPNjFuVCbAFzCOdMoqXqWbD0j0SZHq9nNtqW1Z6KjjKWBau5Osukdqnc2X1_AlMpoYXy_z0FJyA68xUPzNd2HPTARBtzBtpFibGjynBywsaeidu32cRGkLUMnDSGpaKjK7vLqrDjPxRSL"/>
 </div>
 <div class="absolute bottom-0 left-0 right-0 p-6 glass-card transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
 <h4 class="font-headline-md text-xl text-primary mb-2">Horizon Point</h4>
@@ -332,10 +484,9 @@
 </div>
 </div>
 </div>
-<!-- Property Card 5 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="An expansive modern desert retreat with flat roofs, earth-toned concrete walls, and large outdoor living spaces. The landscape is dotted with architectural succulents and warm ambient path lighting. A fire pit glows in the foreground as night falls. The setting is luxurious, tranquil, and integrated with nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1R0cFWP-ASR3oxL00NQjlSpEVhYyKducw7sedJLjrfnjWv8MlT9cgqeaxRyQHHXnhmbt39mMj81oYmZG09pWxYTcT9olhrN6O66J70KuW7CLzZXbrKFRu1uWJKouj-0mnY4U5Do7be4-hbk6we6hUnvPSktCZ-vksMBFccNz4M6sVrRSlBLSBrgaF_v0WofBvuOZXgXOp0XmqAQchxaIOE6Eoh1at0kl-UsxBBg9sTTpROTebhSI"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1R0cFWP-ASR3oxL00NQjlSpEVhYyKducw7sedJLjrfnjWv8MlT9cgqeaxRyQHHXnhmbt39mMj81oYmZG09pWxYTcT9olhrN6O66J70KuW7CLzZXbrKFRu1uWJKouj-0mnY4U5Do7be4-hbk6we6hUnvPSktCZ-vksMBFccNz4M6sVrRSlBLSBrgaF_v0WofBvuOZXgXOp0XmqAQchxaIOE6Eoh1at0kl-UsxBBg9sTTpROTebhSI"/>
 </div>
 <div class="absolute bottom-0 left-0 right-0 p-6 glass-card transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
 <h4 class="font-headline-md text-xl text-primary mb-2">Desert Mirage Villa</h4>
@@ -349,10 +500,9 @@
 </div>
 </div>
 </div>
-<!-- Property Card 6 -->
 <div class="property-card group relative overflow-hidden rounded-2xl reveal shadow-lg">
 <div class="relative aspect-[4/5] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A historic limestone townhome in a prestigious European city, renovated with ultra-modern interiors. The exterior features classical wrought iron balconies and large arched windows. Inside, a glimpse of a modern art gallery and a sculptural staircase is visible. The lighting is elegant city street lamp glow, emphasizing heritage meeting modern luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmjmbvET73AjVO83vx_5qU03_NSF84g2J3vOXE4CJ6n3WSlxgvUanK6vWlKa_Ppxd5_7Cig4p3TTzTz7ryg0l6LIl6uruWoly1WsNROHkhX_sdL3zbKqENtvnAdSEihnxdG2vssjuA-qv7_GANHIrlJXy3nmFeY8hV-JV2A23hTbLy993OQ-qhEUyCFtyGwRxCJGZXAj_P4VMPCoMDzT0Kw1ENwoc3FmuQ4r1Ia7r8j7ZwEPQ4vf33"/>
+<img class="w-full h-full object-cover transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmjmbvET73AjVO83vx_5qU03_NSF84g2J3vOXE4CJ6n3WSlxgvUanK6vWlKa_Ppxd5_7Cig4p3TTzTz7ryg0l6LIl6uruWoly1WsNROHkhX_sdL3zbKqENtvnAdSEihnxdG2vssjuA-qv7_GANHIrlJXy3nmFeY8hV-JV2A23hTbLy993OQ-qhEUyCFtyGwRxCJGZXAj_P4VMPCoMDzT0Kw1ENwoc3FmuQ4r1Ia7r8j7ZwEPQ4vf33"/>
 </div>
 <div class="absolute bottom-0 left-0 right-0 p-6 glass-card transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
 <h4 class="font-headline-md text-xl text-primary mb-2">The Heritage House</h4>
@@ -372,57 +522,52 @@
 </div>
 </div>
 </section>
+
 <!-- Services Bento Grid -->
 <section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto overflow-hidden">
 <div class="text-center mb-stack-xl reveal">
 <p class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.3em] mb-4">Our Services</p>
 <h2 class="font-headline-lg text-headline-lg text-primary">A Comprehensive Real Estate Ecosystem</h2>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px] reveal">
-<!-- Sales -->
-<div class="md:col-span-2 md:row-span-1 bg-primary text-white p-8 rounded-2xl flex flex-col justify-end group cursor-pointer overflow-hidden relative">
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px] reveal">
+<div class="md:col-span-2 md:row-span-1 bg-primary text-white p-6 md:p-8 rounded-2xl flex flex-col justify-end group cursor-pointer overflow-hidden relative min-h-[160px]">
 <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:scale-110 transition-transform duration-500">
 <span class="material-symbols-outlined text-[100px]">real_estate_agent</span>
 </div>
 <div class="relative z-10">
-<h3 class="font-headline-md text-3xl mb-2 text-secondary-fixed">Property Sales</h3>
+<h3 class="font-headline-md text-2xl md:text-3xl mb-2 text-secondary-fixed">Property Sales</h3>
 <p class="text-on-primary-container max-w-xs">Precision marketing and negotiation for high-value asset liquidations.</p>
 </div>
 </div>
-<!-- Rentals -->
-<div class="bg-surface-container-high p-8 rounded-2xl flex flex-col justify-between group hover:bg-secondary/10 transition-colors">
+<div class="bg-surface-container-high p-6 md:p-8 rounded-2xl flex flex-col justify-between group hover:bg-secondary/10 transition-colors min-h-[140px]">
 <span class="material-symbols-outlined text-secondary text-4xl">key</span>
 <div>
 <h3 class="font-headline-md text-xl mb-2">Luxury Rentals</h3>
 <p class="text-sm text-on-surface-variant">Curated short and long-term stays in the world's finest residences.</p>
 </div>
 </div>
-<!-- Management -->
-<div class="bg-surface-container-high p-8 rounded-2xl flex flex-col justify-between group hover:bg-secondary/10 transition-colors">
+<div class="bg-surface-container-high p-6 md:p-8 rounded-2xl flex flex-col justify-between group hover:bg-secondary/10 transition-colors min-h-[140px]">
 <span class="material-symbols-outlined text-secondary text-4xl">inventory</span>
 <div>
 <h3 class="font-headline-md text-xl mb-2">Property Management</h3>
 <p class="text-sm text-on-surface-variant">Hands-off asset maintenance and tenant relations at scale.</p>
 </div>
 </div>
-<!-- Land & Development -->
-<div class="md:col-span-1 md:row-span-1 bg-secondary text-white p-8 rounded-2xl flex flex-col justify-between group hover:brightness-110 transition-all">
+<div class="md:col-span-1 md:row-span-1 bg-secondary text-white p-6 md:p-8 rounded-2xl flex flex-col justify-between group hover:brightness-110 transition-all min-h-[140px]">
 <span class="material-symbols-outlined text-white text-4xl">landscape</span>
 <div>
 <h3 class="font-headline-md text-xl mb-2">Land &amp; Development</h3>
 <p class="text-sm text-white/80">Identifying high-potential sites and managing structural growth.</p>
 </div>
 </div>
-<!-- Advisory -->
-<div class="md:col-span-2 md:row-span-1 glass-card p-8 rounded-2xl flex flex-col justify-end relative overflow-hidden">
-<div class="absolute inset-0 opacity-10 bg-center bg-cover" data-alt="Close up architectural detail of a blueprints and a scale model of a modern skyscraper on a dark desk with gold drafting tools. Professional and precise." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvYXzMW8apmFFTkx1SBeynssFYRmx7pGcafu3Yi6OiMgl3XF3Ae145-rySeAbDSPRaOpLajY98f7vahSz52gRPgckgMatD90_09XKJTUO56dytmHvilbz5Ekoy6r7ZvNQn-m8DP5WzwjeIl5suGL5EDT-Er9GA04BewfyAn-5zvmPvDY0OQs4py5PFsb_d-WElsH0IyPq34GNgDygl8RRQ06IPXd0DKQ_1IdGMfdxvG4W3aZ5PO9qr')"></div>
+<div class="md:col-span-2 md:row-span-1 glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-end relative overflow-hidden min-h-[160px]">
+<div class="absolute inset-0 opacity-10 bg-center bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvYXzMW8apmFFTkx1SBeynssFYRmx7pGcafu3Yi6OiMgl3XF3Ae145-rySeAbDSPRaOpLajY98f7vahSz52gRPgckgMatD90_09XKJTUO56dytmHvilbz5Ekoy6r7ZvNQn-m8DP5WzwjeIl5suGL5EDT-Er9GA04BewfyAn-5zvmPvDY0OQs4py5PFsb_d-WElsH0IyPq34GNgDygl8RRQ06IPXd0DKQ_1IdGMfdxvG4W3aZ5PO9qr')"></div>
 <div class="relative z-10">
 <h3 class="font-headline-md text-2xl mb-2">Strategic Advisory</h3>
 <p class="text-on-surface-variant max-w-sm">Investment consulting for portfolios ranging from private holdings to REITs.</p>
 </div>
 </div>
-<!-- Valuation -->
-<div class="md:col-span-1 md:row-span-1 border border-outline-variant p-8 rounded-2xl flex flex-col justify-between hover:border-secondary transition-colors group">
+<div class="md:col-span-1 md:row-span-1 border border-outline-variant p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:border-secondary transition-colors group min-h-[140px]">
 <span class="material-symbols-outlined text-secondary text-4xl group-hover:rotate-12 transition-transform">analytics</span>
 <div>
 <h3 class="font-headline-md text-xl mb-2">Valuation</h3>
@@ -431,6 +576,7 @@
 </div>
 </div>
 </section>
+
 <!-- Happy Clients & Stats -->
 <section class="py-stack-xl bg-primary text-white overflow-hidden">
 <div class="max-w-container-max mx-auto px-margin-desktop">
@@ -438,29 +584,28 @@
 <div class="lg:col-span-4 reveal">
 <p class="font-label-caps text-label-caps text-secondary-fixed uppercase tracking-[0.3em] mb-4">Our Track Record</p>
 <h2 class="font-headline-lg text-headline-lg mb-8">Legacy of Excellence</h2>
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-2 gap-6 md:gap-8">
 <div>
-<span class="block text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="500">0</span>
-<span class="text-sm uppercase tracking-widest text-on-primary-fixed-variant">Properties Sold</span>
+<span class="block text-3xl md:text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="500">0</span>
+<span class="text-xs md:text-sm uppercase tracking-widest text-on-primary-fixed-variant">Properties Sold</span>
 </div>
 <div>
-<span class="block text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="1000">0</span>
-<span class="text-sm uppercase tracking-widest text-on-primary-fixed-variant">Clients Served</span>
+<span class="block text-3xl md:text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="1000">0</span>
+<span class="text-xs md:text-sm uppercase tracking-widest text-on-primary-fixed-variant">Clients Served</span>
 </div>
 <div>
-<span class="block text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="15">0</span>
-<span class="text-sm uppercase tracking-widest text-on-primary-fixed-variant">Years of Heritage</span>
+<span class="block text-3xl md:text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="15">0</span>
+<span class="text-xs md:text-sm uppercase tracking-widest text-on-primary-fixed-variant">Years of Heritage</span>
 </div>
 <div>
-<span class="block text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="25">0</span>
-<span class="text-sm uppercase tracking-widest text-on-primary-fixed-variant">Expert Agents</span>
+<span class="block text-3xl md:text-4xl font-display-lg text-secondary-fixed mb-1 counter" data-target="25">0</span>
+<span class="text-xs md:text-sm uppercase tracking-widest text-on-primary-fixed-variant">Expert Agents</span>
 </div>
 </div>
 </div>
 <div class="lg:col-span-8">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Testimonial 1 -->
-<div class="bg-surface-container-lowest/10 backdrop-blur-md p-8 rounded-xl border border-white/10 reveal">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md p-6 md:p-8 rounded-xl border border-white/10 reveal">
 <div class="flex gap-1 mb-6 text-secondary-fixed">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -470,15 +615,14 @@
 </div>
 <p class="italic text-white/80 mb-8 leading-relaxed">"Havon Realty redefined what a real estate experience should be. Their attention to detail was unmatched."</p>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-cover bg-center" data-alt="Portrait of a sophisticated professional man in his late 40s, wearing a navy tailored suit, smiling confidently in a modern glass-walled office environment. High-key lighting, professional photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVTqLaPn_lGwkaqQZIJCWkzaY5htSLzxSsFMWHRgxt7DeNFbPkZJmkc_oWQFKQdvvV5s8qRbQupSA8Jed5ecGNZvVEjoIb4uIgyKlOID3FkRHOnGNx19H1rcZ_RNBOnxpcxr4rQQuqG8ej_ZQ5PT3RSy9mgHjSVv_tvwvAlDPBrycU9LCcM6-s2Xy6D-UhTK3iteLLBmbavWqDwMdp6RUlEq-D1kMbqU6_wEmOVzMel6TbXHCQLCdV')"></div>
+<div class="w-12 h-12 rounded-full bg-cover bg-center flex-shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVTqLaPn_lGwkaqQZIJCWkzaY5htSLzxSsFMWHRgxt7DeNFbPkZJmkc_oWQFKQdvvV5s8qRbQupSA8Jed5ecGNZvVEjoIb4uIgyKlOID3FkRHOnGNx19H1rcZ_RNBOnxpcxr4rQQuqG8ej_ZQ5PT3RSy9mgHjSVv_tvwvAlDPBrycU9LCcM6-s2Xy6D-UhTK3iteLLBmbavWqDwMdp6RUlEq-D1kMbqU6_wEmOVzMel6TbXHCQLCdV')"></div>
 <div>
 <h5 class="font-bold text-sm">Alexander Vance</h5>
 <p class="text-xs text-secondary-fixed">CEO, Vance Capital</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 2 -->
-<div class="bg-surface-container-lowest/10 backdrop-blur-md p-8 rounded-xl border border-white/10 reveal">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md p-6 md:p-8 rounded-xl border border-white/10 reveal">
 <div class="flex gap-1 mb-6 text-secondary-fixed">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -488,15 +632,14 @@
 </div>
 <p class="italic text-white/80 mb-8 leading-relaxed">"Their global network opened doors to properties we didn't even know were on the market. Truly elite."</p>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-cover bg-center" data-alt="Portrait of an elegant woman in her 30s with a sharp, professional appearance, wearing a beige luxury blazer. She is standing in a brightly lit, modern gallery-style home. Minimalist and refined aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdQ7vSlPaYZjlu8qiIL-ggf9eBIFy-jAQDO2lujR_uDg6_I__qLWEt9PvqT7l7WfKEqQWDyH46kMW988Gfh3uNpw9g4uPxh0qZMgEizHqX_dDQpRKVy5NxSF6BIuMD2LkTa5vwtABOIbYMbm-0wEoFOG-BizmK_NgqwPjy2lT5R7hMx7AU4aMCdBluWiuGKsOk_jO_QiWtgFMNycih3D-hUn7SvZOPQAX6y9i09uZqyk8X94vPYvkM')"></div>
+<div class="w-12 h-12 rounded-full bg-cover bg-center flex-shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdQ7vSlPaYZjlu8qiIL-ggf9eBIFy-jAQDO2lujR_uDg6_I__qLWEt9PvqT7l7WfKEqQWDyH46kMW988Gfh3uNpw9g4uPxh0qZMgEizHqX_dDQpRKVy5NxSF6BIuMD2LkTa5vwtABOIbYMbm-0wEoFOG-BizmK_NgqwPjy2lT5R7hMx7AU4aMCdBluWiuGKsOk_jO_QiWtgFMNycih3D-hUn7SvZOPQAX6y9i09uZqyk8X94vPYvkM')"></div>
 <div>
 <h5 class="font-bold text-sm">Elena Rodriguez</h5>
 <p class="text-xs text-secondary-fixed">Tech Entrepreneur</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 3 -->
-<div class="bg-surface-container-lowest/10 backdrop-blur-md p-8 rounded-xl border border-white/10 reveal">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md p-6 md:p-8 rounded-xl border border-white/10 reveal">
 <div class="flex gap-1 mb-6 text-secondary-fixed">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -506,7 +649,7 @@
 </div>
 <p class="italic text-white/80 mb-8 leading-relaxed">"Management of my international portfolio has never been easier. Havon is a partner I can trust."</p>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-cover bg-center" data-alt="Portrait of a mature, distinguished gentleman in a charcoal sweater, looking thoughtfully out of a large window in a luxurious library setting. Warm, moody, sophisticated lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRLH7JuObeelhd2YiXVZsNWBrzIBqcNKkeB-XoVd0V-7NST0ugnSvp2UHpMQaLPaLkNGgNVcePC34MWydaREFUzu0r7N0OSe6N-VT2zUQeCAtZjFpWN86gIOgLKzqfUygY0JdH1Zcq-fOQU-YcF8LgdYq7mn3h9FhHULwDZ9zwx9euIKnqpcBUDt92wz548jHZQPC96UM4YZUB6h-SKJWZS4yXzeVCVnbZ8NeZpHAzJhVTWI33ev1f')"></div>
+<div class="w-12 h-12 rounded-full bg-cover bg-center flex-shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRLH7JuObeelhd2YiXVZsNWBrzIBqcNKkeB-XoVd0V-7NST0ugnSvp2UHpMQaLPaLkNGgNVcePC34MWydaREFUzu0r7N0OSe6N-VT2zUQeCAtZjFpWN86gIOgLKzqfUygY0JdH1Zcq-fOQU-YcF8LgdYq7mn3h9FhHULwDZ9zwx9euIKnqpcBUDt92wz548jHZQPC96UM4YZUB6h-SKJWZS4yXzeVCVnbZ8NeZpHAzJhVTWI33ev1f')"></div>
 <div>
 <h5 class="font-bold text-sm">Julian Thorne</h5>
 <p class="text-xs text-secondary-fixed">Private Investor</p>
@@ -518,22 +661,73 @@
 </div>
 </div>
 </section>
+
+<!-- Contact Section -->
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-start">
+<div class="reveal">
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.3em] mb-4">Get In Touch</p>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Let's Talk Property</h2>
+<p class="text-on-surface-variant leading-relaxed mb-8">Fill in the form and we'll open a WhatsApp chat pre-filled with your details, straight to our consultants — no waiting on email replies.</p>
+<div class="flex items-center gap-4 p-5 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 mb-6">
+<div class="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white">chat</span>
+</div>
+<div>
+<p class="font-bold text-primary">Chat with us on WhatsApp</p>
+<a class="text-on-surface-variant text-sm hover:text-secondary transition-colors" href="https://wa.me/2347034900293" target="_blank" rel="noopener">+234 703 490 0293</a>
+</div>
+</div>
+</div>
+
+<form class="glass-card p-6 md:p-8 rounded-2xl reveal" id="contactForm">
+<div class="mb-5">
+<label class="block text-sm font-semibold text-primary mb-2" for="name">Full Name</label>
+<input class="form-field w-full rounded-md border border-outline-variant px-4 py-3 focus:border-secondary focus:ring-secondary outline-none" id="name" placeholder="Your name" required type="text"/>
+</div>
+<div class="mb-5">
+<label class="block text-sm font-semibold text-primary mb-2" for="phone">Phone Number</label>
+<input class="form-field w-full rounded-md border border-outline-variant px-4 py-3 focus:border-secondary focus:ring-secondary outline-none" id="phone" placeholder="Your phone number" required type="tel"/>
+</div>
+<div class="mb-5">
+<label class="block text-sm font-semibold text-primary mb-2" for="interest">I'm Interested In</label>
+<select class="form-field w-full rounded-md border border-outline-variant px-4 py-3 focus:border-secondary focus:ring-secondary outline-none" id="interest">
+<option>Buying a Property</option>
+<option>Renting a Property</option>
+<option>Selling a Property</option>
+<option>Property Management</option>
+<option>Investment Advisory</option>
+</select>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-semibold text-primary mb-2" for="message">Message</label>
+<textarea class="form-field w-full rounded-md border border-outline-variant px-4 py-3 focus:border-secondary focus:ring-secondary outline-none" id="message" placeholder="Tell us what you're looking for..." rows="4"></textarea>
+</div>
+<button class="wa-btn w-full bg-[#25D366] text-white px-8 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:brightness-95 transition-all duration-300 flex items-center justify-center gap-2" id="submitBtn" type="submit">
+<span class="material-symbols-outlined" id="submitIcon">chat</span>
+<span id="submitText">Send via WhatsApp</span>
+</button>
+</form>
+</div>
+</section>
+
 <!-- CTA Banner -->
-<section class="relative py-24 overflow-hidden">
+<section class="relative py-16 md:py-24 overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="A blurred, ethereal background of a golden sunset over a calm ocean, viewed through a high-end luxury balcony with glass railings. The image is filtered to be soft and atmospheric, highlighting the contrast between navy shadows and warm gold highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC51i4IaIQiZGV08qJ2ScV_kxPeSv8-i_75WcZ6prfOwIW0fZOJsIlA7gGHkWYTEPHFlT1Y0NVO9V5nZC-1u-MIWpf1gNgf7clZt1xA6mx-8_oWnVePJvUe-muG6g_h-U008NV8Yk-Blyq888-euh7Xly5zyEHgkN9RPgXwbmMkbF1QnYXG_SC2HIt82njpJ-sYi91qwf79FYCswJl7wQg4TJ_xxmzElBP0jl3tHNLhqcELzRNAXpzf"/>
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC51i4IaIQiZGV08qJ2ScV_kxPeSv8-i_75WcZ6prfOwIW0fZOJsIlA7gGHkWYTEPHFlT1Y0NVO9V5nZC-1u-MIWpf1gNgf7clZt1xA6mx-8_oWnVePJvUe-muG6g_h-U008NV8Yk-Blyq888-euh7Xly5zyEHgkN9RPgXwbmMkbF1QnYXG_SC2HIt82njpJ-sYi91qwf79FYCswJl7wQg4TJ_xxmzElBP0jl3tHNLhqcELzRNAXpzf"/>
 <div class="absolute inset-0 bg-primary/60 backdrop-blur-sm"></div>
 </div>
 <div class="relative z-10 max-w-4xl mx-auto text-center px-margin-mobile reveal">
 <h2 class="font-headline-lg text-headline-lg text-white mb-8">Ready to Find Your Dream Property?</h2>
 <p class="text-body-lg text-white/80 mb-10 max-w-2xl mx-auto">Connect with our consultants today for a private session and discover a curated list of properties that match your lifestyle.</p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-secondary text-on-secondary px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:scale-105 transition-transform shadow-2xl">
+<a class="bg-secondary text-on-secondary px-10 py-4 rounded-md font-label-caps text-label-caps uppercase tracking-widest hover:scale-105 transition-transform shadow-2xl inline-block" href="https://wa.me/2347034900293" rel="noopener" target="_blank">
                     Schedule a Consultation
-                </button>
+                </a>
 </div>
 </div>
 </section>
+
 <!-- Footer -->
 <footer class="bg-primary text-on-primary">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-xl max-w-container-max mx-auto border-t border-outline-variant">
@@ -552,27 +746,27 @@
 <a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all" href="#">
 <span class="material-symbols-outlined text-sm">share</span>
 </a>
-<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all" href="#">
-<span class="material-symbols-outlined text-sm">mail</span>
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all" href="https://wa.me/2347034900293" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-sm">chat</span>
 </a>
 </div>
 </div>
 <div>
 <h4 class="font-bold uppercase tracking-widest text-secondary-fixed mb-6 text-sm">Quick Links</h4>
 <ul class="space-y-4">
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Properties</a></li>
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Featured Estates</a></li>
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Investment Portfolios</a></li>
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">New Developments</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#properties">Properties</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="about.html">About Us</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#contact">Contact</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="https://wa.me/2347034900293" rel="noopener" target="_blank">WhatsApp Us</a></li>
 </ul>
 </div>
 <div>
 <h4 class="font-bold uppercase tracking-widest text-secondary-fixed mb-6 text-sm">Company</h4>
 <ul class="space-y-4">
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">About Us</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="about.html">About Us</a></li>
 <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
 <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
-<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Contact</a></li>
+<li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#contact">Contact</a></li>
 </ul>
 </div>
 <div>
@@ -590,6 +784,7 @@
 <p>© 2024 Havon Realty Limited. All rights reserved. Crafted for excellence.</p>
 </div>
 </footer>
+
 <script>
         // Scroll Reveal Animation
         function reveal() {
@@ -603,23 +798,18 @@
                 }
             }
         }
-
         window.addEventListener("scroll", reveal);
-        
-        // Initial check
         reveal();
 
         // Counters Animation
         const counters = document.querySelectorAll('.counter');
         const speed = 200;
-
         const startCounters = () => {
             counters.forEach(counter => {
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
                     const inc = target / speed;
-
                     if (count < target) {
                         counter.innerText = Math.ceil(count + inc);
                         setTimeout(updateCount, 10);
@@ -630,16 +820,95 @@
                 updateCount();
             });
         };
-
-        // Observer for stats section
         const statsSection = document.querySelector('.lg\\:col-span-4');
-        const observer = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting) {
-                startCounters();
-                observer.unobserve(statsSection);
-            }
-        }, { threshold: 0.5 });
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    startCounters();
+                    observer.unobserve(statsSection);
+                }
+            }, { threshold: 0.5 });
+            observer.observe(statsSection);
+        }
 
-        observer.observe(statsSection);
+        // ============ MOBILE MENU LOGIC ============
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuPanel = document.getElementById('menuPanel');
+
+        function openMenu() {
+            menuToggle.classList.add('open');
+            menuOverlay.classList.add('open');
+            menuPanel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            menuOverlay.classList.remove('open');
+            menuPanel.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        menuToggle.addEventListener('click', () => {
+            menuPanel.classList.contains('open') ? closeMenu() : openMenu();
+        });
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = link.getAttribute('data-target');
+                const el = document.querySelector(target);
+                if (el) {
+                    e.preventDefault();
+                    closeMenu();
+                    setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 300);
+                }
+            });
+        });
+
+        // ============ CONTACT FORM -> WHATSAPP ============
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitIcon = document.getElementById('submitIcon');
+        const submitText = document.getElementById('submitText');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const interest = document.getElementById('interest').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone) {
+                document.getElementById('name').reportValidity();
+                document.getElementById('phone').reportValidity();
+                return;
+            }
+
+            submitIcon.classList.add('success-pop');
+            submitIcon.textContent = 'check_circle';
+            submitText.textContent = 'Opening WhatsApp...';
+            submitBtn.style.transform = 'scale(0.97)';
+            setTimeout(() => submitBtn.style.transform = 'scale(1)', 200);
+
+            const waNumber = "2347034900293";
+            const text =
+                "Hello Havon Realty, my name is " + name + "." +
+                "\nPhone: " + phone +
+                "\nI'm interested in: " + interest +
+                (message ? "\nMessage: " + message : "");
+
+            const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
+
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+                submitIcon.textContent = 'chat';
+                submitIcon.classList.remove('success-pop');
+                submitText.textContent = 'Send via WhatsApp';
+                contactForm.reset();
+            }, 700);
+        });
     </script>
 </body></html>
